@@ -1,5 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
+    <!-- Header -->
     <q-header elevated>
       <q-toolbar>
         <q-btn
@@ -12,33 +13,33 @@
         />
 
         <q-toolbar-title>
-          Quasar App
+          UpsideDown
         </q-toolbar-title>
 
         <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
     </q-header>
 
+    <!-- Sidebar -->
     <q-drawer
       v-model="leftDrawerOpen"
       show-if-above
       bordered
+      class="my-sidebar"
     >
       <q-list>
-        <q-item-label
-          header
-        >
-          Essential Links
-        </q-item-label>
-
         <EssentialLink
           v-for="link in linksList"
           :key="link.title"
-          v-bind="link"
+          :title="link.title"
+          :caption="link.caption"
+          :icon="link.icon"
+          :link="link.link"
         />
       </q-list>
     </q-drawer>
 
+    <!-- Main Content -->
     <q-page-container>
       <router-view />
     </q-page-container>
@@ -46,61 +47,81 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import EssentialLink from 'components/EssentialLink.vue'
+import { ref } from 'vue';
+import EssentialLink from 'components/EssentialLink.vue';
 
 defineOptions({
   name: 'MainLayout'
-})
+});
 
 const linksList = [
   {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
+    title: 'Početna stranica',
+    caption: '',
+    icon: 'home',
+    link: '#/'
   },
   {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
+    title: 'O igri',
+    caption: '',
+    icon: 'search',
+    link: '#/about'
+  },
+  {
+    title: 'Likovi',
+    caption: '',
+    icon: 'person',
+    link: '#/Likovi'
+  },
+  {
+    title: 'Combat',
+    caption: '',
+    icon: 'star',
+    link: '#/combat'
+  },
+  {
+    title: 'O nama',
+    caption: 'Nešto malo o našoj ekipi',
+    icon: 'person',
+    link: '#/Onama'
+  },
+  {
+    title: 'Patch Notes',
+    caption: '',
     icon: 'code',
-    link: 'https://github.com/quasarframework'
+    link: '#/Notes'
   },
   {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
+    title: 'Kontakt',
+    caption: '',
+    icon: 'info',
+    link: '#/Kontakti'
   }
-]
+];
 
-const leftDrawerOpen = ref(false)
+const leftDrawerOpen = ref(false);
 
-function toggleLeftDrawer () {
-  leftDrawerOpen.value = !leftDrawerOpen.value
+function toggleLeftDrawer() {
+  leftDrawerOpen.value = !leftDrawerOpen.value;
 }
 </script>
+
+<style scoped>
+/* Sidebar pozadina */
+.my-sidebar {
+  background-color: #000 !important; /* Crna boja */
+  color: #fff !important; /* Bijela boja teksta */
+}
+
+/* Stil za stavke u sidebaru */
+.my-sidebar .q-item {
+  background-color: transparent !important; /* Transparentna pozadina stavki */
+  color: #fff !important; /* Bijela boja teksta */
+}
+
+/* Hover efekat */
+.my-sidebar .q-item:hover {
+  background-color: #444 !important; /* Svjetlija nijansa za hover */
+  color: #fff !important; /* Tekst ostaje bijel na hover */
+}
+</style>

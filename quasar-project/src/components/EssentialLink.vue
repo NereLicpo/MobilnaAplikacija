@@ -14,7 +14,7 @@
 
     <q-item-section>
       <q-item-label>{{ props.title }}</q-item-label>
-      <q-item-label caption>{{ props.caption }}</q-item-label>
+      <q-item-label caption class="caption-text">{{ props.caption }}</q-item-label>
     </q-item-section>
   </q-item>
 </template>
@@ -46,3 +46,9 @@ const props = defineProps({
   }
 })
 </script>
+
+<style scoped>
+.caption-text {
+  color: #fff !important; /* Bijela boja za caption */
+}
+</style>

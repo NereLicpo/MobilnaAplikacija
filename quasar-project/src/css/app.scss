@@ -1,1 +1,56 @@
 // app global css in SCSS form
+// app global css in SCSS form
+body {
+    margin: 0;
+    font-family: 'Libre Baskerville', serif;
+    background: url('/src/assets/images/555.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    background-color: #111;
+  }
+  
+  
+  
+  .header {
+    background: linear-gradient(180deg, #111, #222);
+    border-bottom: 2px solid #ff4b5c;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .synopsis {
+    background: rgba(17, 17, 17, 0.95);
+    border-left: 5px solid #ff4b5c;
+  }
+  
+  /* Sidebar pozadina */
+.my-sidebar {
+    background-color: #000 !important; /* Crna boja */
+    color: #fff !important; /* Bijela boja teksta */
+  }
+  
+  /* Stil za stavke u sidebaru */
+  .my-sidebar .q-item {
+    background-color: transparent !important; /* Transparentna pozadina stavki */
+    color: #fff !important; /* Bijela boja teksta */
+  }
+  
+  /* Stil za naslov i opis unutar stavki (title i caption) */
+  .my-sidebar .q-item .q-item-section {
+    color: #fff !important; /* Bijela boja za naslove i opise */
+  }
+  
+  /* Stil za ikone unutar sidebar-a */
+  .my-sidebar .q-item .q-item-section .q-icon {
+    color: #fff !important; /* Bijela boja za ikone */
+  }
+  
+  /* Hover efekat */
+  .my-sidebar .q-item:hover {
+    background-color: #444 !important; /* Svjetlija nijansa za hover */
+    color: #fff !important; /* Tekst ostaje bijel na hover */
+  }
+  
+  /* Hover caption osiguranje */
+  .my-sidebar .q-item:hover .q-item-section {
+    color: #fff !important; /* Bijela boja za sve sekcije na hover */
+  }
+  
