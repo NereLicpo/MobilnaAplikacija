@@ -55,7 +55,7 @@ export default {
   methods: {
     fetchNotes() {
       axios
-        .get("http://192.168.56.1:3000/api/developer-notes")
+        .get("http://192.168.5.11:3000/api/developer-notes")
         .then((response) => {
           this.notes = response.data;
         })

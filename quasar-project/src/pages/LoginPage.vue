@@ -62,7 +62,7 @@ export default {
 
       try {
         const response = await axios.post(
-          "http://192.168.56.1:3000/api/login",
+          "http://192.168.5.11:3000/api/login",
           { email: email.value, password: password.value }, // ✅ Use `.value`
           {
             headers: { "Content-Type": "application/json" },

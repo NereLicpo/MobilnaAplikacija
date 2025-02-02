@@ -68,7 +68,7 @@ const linksList = [
   {
     title: "Likovi",
     caption: "",
-    icon: "person",
+    icon: "emoji_people",
     link: "/Likovi",
   },
 
@@ -81,37 +81,37 @@ const linksList = [
   {
     title: "Patch Notes",
     caption: "",
-    icon: "code",
+    icon: "description",
     link: "/Notes",
   },
   {
     title: "Kontakt",
     caption: "",
-    icon: "info",
+    icon: "contact_support",
     link: "/Kontakti",
   },
   {
     title: "Community",
     caption: "",
-    icon: "info",
+    icon: "groups",
     link: "/Community",
   },
   {
     title: "Download",
     caption: "",
-    icon: "info",
+    icon: "download",
     link: "/Download",
   },
   {
-    title: "Leaderoards",
+    title: "Leaderboards",
     caption: "",
-    icon: "info",
+    icon: "leaderboard",
     link: "/LeaderBoards",
   },
   {
     title: "Login",
     caption: "",
-    icon: "info",
+    icon: "login",
     link: "/Login",
   },
 ];
