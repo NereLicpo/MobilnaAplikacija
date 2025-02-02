@@ -16,15 +16,25 @@
           </q-card-section>
           <q-separator />
           <q-card-section>
-            <div class="text-body2"><strong>Category:</strong> {{ note.Category }}</div>
-            <div class="text-body2"><strong>Priority:</strong> {{ note.Priority }}</div>
-            <div class="text-body2"><strong>Author:</strong> {{ note.Author }}</div>
-            <div class="text-body2"><strong>Status:</strong> {{ note.Status }}</div>
             <div class="text-body2">
-              <strong>Created At:</strong> {{ new Date(note.CreatedAt).toLocaleString() }}
+              <strong>Category:</strong> {{ note.Category }}
             </div>
             <div class="text-body2">
-              <strong>Updated At:</strong> {{ new Date(note.UpdatedAt).toLocaleString() }}
+              <strong>Priority:</strong> {{ note.Priority }}
+            </div>
+            <div class="text-body2">
+              <strong>Author:</strong> {{ note.Author }}
+            </div>
+            <div class="text-body2">
+              <strong>Status:</strong> {{ note.Status }}
+            </div>
+            <div class="text-body2">
+              <strong>Created At:</strong>
+              {{ new Date(note.CreatedAt).toLocaleString() }}
+            </div>
+            <div class="text-body2">
+              <strong>Updated At:</strong>
+              {{ new Date(note.UpdatedAt).toLocaleString() }}
             </div>
           </q-card-section>
         </q-card>
@@ -34,7 +44,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
   data() {
@@ -44,18 +54,19 @@ export default {
   },
   methods: {
     fetchNotes() {
-      axios.get('http://localhost:3000/api/developer-notes')
-        .then(response => {
+      axios
+        .get("http://192.168.56.1:3000/api/developer-notes")
+        .then((response) => {
           this.notes = response.data;
         })
-        .catch(error => {
-          console.error('Error fetching developer notes:', error);
+        .catch((error) => {
+          console.error("Error fetching developer notes:", error);
         });
-    }
+    },
   },
   mounted() {
     this.fetchNotes();
-  }
+  },
 };
 </script>
 

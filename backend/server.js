@@ -21,8 +21,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: "http://localhost:9000", // Adjust to your frontend port
-    credentials: true, // Allow cookies to be sent
+    origin: "*",
+    methods: "GET,POST,PUT,DELETE,SELECT,INSERT",
+    credentials: true,
   })
 );
 

@@ -71,12 +71,7 @@ const linksList = [
     icon: "person",
     link: "/Likovi",
   },
-  {
-    title: "Combat",
-    caption: "",
-    icon: "star",
-    link: "/combat",
-  },
+
   {
     title: "O nama",
     caption: "Nešto malo o našoj ekipi",
@@ -118,12 +113,6 @@ const linksList = [
     caption: "",
     icon: "info",
     link: "/Login",
-  },
-  {
-    title: "Admin",
-    caption: "",
-    icon: "info",
-    link: "/admin/admin",
   },
 ];
 

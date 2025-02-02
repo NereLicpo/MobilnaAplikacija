@@ -2,7 +2,9 @@
   <div class="game-page">
     <div class="header">
       <h1>{{ gameTitle }}</h1>
-      <p class="tagline">Uronite u mračni svijet gdje razum dolazi na kušnju.</p>
+      <p class="tagline">
+        Uronite u mračni svijet gdje razum dolazi na kušnju.
+      </p>
     </div>
     <div class="game-details">
       <div class="detail">
@@ -45,9 +47,9 @@ export default {
       platform: "PC",
       playerMode: "Single-player",
       synopsis:
-        "Igrač preuzima kontrolu nad Krunom, ubicom zarobljenim u raspadnutom svijetu punom stravičnih nakaza. Glavni cilj igre je preživjeti, pronaći hranu i vodu, ali i očuvati zdrav razum dok se suočava s vlastitim unutarnjim demonima i užasima vanjskog svijeta."
+        "Igrač preuzima kontrolu nad Krunom, ubicom zarobljenim u raspadnutom svijetu punom stravičnih nakaza. Glavni cilj igre je preživjeti, pronaći hranu i vodu, ali i očuvati zdrav razum dok se suočava s vlastitim unutarnjim demonima i užasima vanjskog svijeta.",
     };
-  }
+  },
 };
 </script>
 
@@ -55,8 +57,9 @@ export default {
 /* Opći stil */
 body {
   margin: 0;
-  font-family: 'Creepster', cursive; /* Strašan font */
-  background: url('https://via.placeholder.com/1600x900?text=Dark+Horror+Background') center/cover no-repeat;
+  font-family: "Creepster", cursive; /* Strašan font */
+  background: url("https://via.placeholder.com/1600x900?text=Dark+Horror+Background")
+    center/cover no-repeat;
   color: #f8f8f8;
 }
 
