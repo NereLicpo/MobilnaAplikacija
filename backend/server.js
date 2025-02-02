@@ -1,13 +1,30 @@
 const express = require("express");
 const mysql = require("mysql2");
 const cors = require("cors");
+const session = require("express-session");
 
 const app = express();
 const PORT = 3000;
 
 // Middleware
-app.use(cors());
+
+app.use(
+  session({
+    secret: "ante", // Change this to a strong secret
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: false }, // Set to `true` in production with HTTPS
+  })
+);
+
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(
+  cors({
+    origin: "http://localhost:9000", // Adjust to your frontend port
+    credentials: true, // Allow cookies to be sent
+  })
+);
 
 // Database connection
 const db = mysql.createConnection({
@@ -49,23 +66,25 @@ app.post("/api/messages", (req, res) => {
   });
 });
 
+//Login Route
 app.post("/api/login", (req, res) => {
+  console.log("Received login request:", req.body); // Debugging
+
   const { email, password } = req.body;
+  if (!email || !password) {
+    return res.status(400).json({ error: "Missing email or password" });
+  }
 
   const query = "SELECT * FROM Users WHERE email = ? AND password = ?";
   db.query(query, [email, password], (err, results) => {
     if (err) {
-      return res.status(500).json({ error: "Database error" });
+      return res.status(500).json({ error: err });
     }
-
     if (results.length > 0) {
-      res.json({
-        id: results[0].id,
-        email: results[0].email,
-        role: results[0].role, // Return user role
-      });
+      req.session.user = { id: results[0].id, role: results[0].role };
+      return res.json({ message: "Login successful", role: results[0].role });
     } else {
-      res.status(401).json({ error: "Invalid credentials" });
+      return res.status(401).json({ error: "Invalid credentials" });
     }
   });
 });
@@ -78,13 +97,19 @@ app.get("/api/check-auth", (req, res) => {
   }
 });
 
+//Logout route
 app.post("/api/logout", (req, res) => {
-  req.session.destroy((err) => {
-    if (err) {
-      return res.status(500).json({ error: "Logout failed" });
-    }
-    res.json({ success: true });
-  });
+  if (req.session) {
+    req.session.destroy((err) => {
+      if (err) {
+        return res.status(500).json({ error: "Logout failed" });
+      }
+      res.clearCookie("connect.sid"); // Clears session cookie
+      res.json({ success: true });
+    });
+  } else {
+    res.status(400).json({ error: "No active session" });
+  }
 });
 
 // Start the server

@@ -123,7 +123,7 @@ const linksList = [
     title: "Admin",
     caption: "",
     icon: "info",
-    link: "/admin",
+    link: "/admin/admin",
   },
 ];
 

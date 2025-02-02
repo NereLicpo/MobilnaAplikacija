@@ -31,6 +31,7 @@ export default route(function (/* { store, ssrContext } */) {
             withCredentials: true, // Ensures cookies are sent
           }
         );
+        console.log("Auth check response:", response.data); // Debugging
 
         if (response.data.role === "admin") {
           next();
@@ -38,6 +39,7 @@ export default route(function (/* { store, ssrContext } */) {
           next("/"); // Redirect non-admins to home
         }
       } catch (error) {
+        console.error("Auth check failed:", error.response?.data || error);
         next("/"); // Redirect to home on error
       }
     } else {

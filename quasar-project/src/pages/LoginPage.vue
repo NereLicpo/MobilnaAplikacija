@@ -52,13 +52,25 @@ export default {
     const router = useRouter();
 
     const login = async () => {
+      if (!email.value || !password.value) {
+        error.value = "Please enter both email and password.";
+        return;
+      }
+
       loading.value = true;
       error.value = "";
+
       try {
-        const response = await axios.post("http://localhost:3000/api/login", {
-          email: email.value,
-          password: password.value,
-        });
+        const response = await axios.post(
+          "http://localhost:3000/api/login",
+          { email: email.value, password: password.value }, // ✅ Use `.value`
+          {
+            headers: { "Content-Type": "application/json" },
+            withCredentials: true, // Ensures cookies are sent
+          }
+        );
+
+        console.log("Login response:", response.data);
 
         if (response.data.role === "admin") {
           router.push("/admin");
@@ -66,7 +78,7 @@ export default {
           router.push("/");
         }
       } catch (err) {
-        error.value = err.response?.data?.error || "Login failed";
+        error.value = err.response?.data?.error || "Invalid email or password";
       } finally {
         loading.value = false;
       }

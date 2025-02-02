@@ -23,13 +23,14 @@ const routes = [
         path: "Login",
         component: () => import("pages/LoginPage.vue"),
       },
+      {
+        path: "/admin",
+        component: () => import("pages/AdminPage.vue"),
+        meta: { requiresAdmin: true },
+      },
     ],
   },
-  {
-    path: "/admin",
-    component: () => import("pages/AdminPage.vue"),
-    meta: { requiresAdmin: true },
-  },
+
   {
     path: "/:catchAll(.*)*",
     component: () => import("pages/ErrorNotFound.vue"),
